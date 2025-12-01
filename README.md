@@ -167,3 +167,8 @@ curl -X POST http://localhost:8000/api/anuncios \
 ## License
 
 This project is for educational purposes.
+
+
+
+docker-compose up --build
+docker exec -it unilife-api php artisan migrate:fresh --seed
