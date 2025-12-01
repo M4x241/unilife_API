@@ -1,0 +1,189 @@
+{
+  "info": {
+    "name": "UniLife API - Complete",
+    "description": "Complete API collection for UniLife system with JWT Authentication",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/api/login",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"correo\": \"carlos.rodriguez@ucb.edu.bo\",\n  \"contrasena\": \"20210001Rodriguez\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Authenticated User",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/me",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}]
+          }
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/api/logout",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}]
+          }
+        },
+        {
+          "name": "Refresh Token",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/api/refresh",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Universitarios",
+      "item": [
+        {
+          "name": "List Students",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/universitarios"
+          }
+        },
+        {
+          "name": "Create Student",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/api/universitarios",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cu\": \"12345\",\n  \"nombres\": \"Juan\",\n  \"apellidos\": \"Garcia\",\n  \"correo\": \"juan.garcia@university.edu\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Student by CU",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/universitarios/12345"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Store Products",
+      "item": [
+        {
+          "name": "List All Products",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/store/products"
+          }
+        },
+        {
+          "name": "Filter by Category",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/store/products?category=Bebidas"
+          }
+        },
+        {
+          "name": "Create Product",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/api/store/products",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"category_id\": 1,\n  \"nombre\": \"Coca Cola\",\n  \"imagen_url\": \"https://example.com/coca-cola.jpg\",\n  \"cantidad\": 50,\n  \"precio\": 1.50\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Marketplace Products",
+      "item": [
+        {
+          "name": "List All Products",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/marketplace/products"
+          }
+        },
+        {
+          "name": "Create Product",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/api/marketplace/products",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Calculadora Científica\",\n  \"descripcion\": \"Casio FX-991 en excelente estado\",\n  \"imagen_url\": \"https://example.com/calculator.jpg\",\n  \"precio\": 25.00,\n  \"cu_owner\": \"12345\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Purchase Product",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/api/marketplace/products/1/purchase",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cu_comprador\": \"67890\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Anuncios",
+      "item": [
+        {
+          "name": "List All Announcements",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/anuncios"
+          }
+        },
+        {
+          "name": "Filter by Career",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/anuncios?carrera=TIC"
+          }
+        },
+        {
+          "name": "Create Announcement",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/api/anuncios",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"carrera\": \"Ciencias de la Computación\",\n  \"anuncio\": \"Examen final de Algoritmos el viernes 15\",\n  \"categoria\": \"importante\"\n}"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000"
+    },
+    {
+      "key": "token",
+      "value": ""
+    }
+  ]
+}
