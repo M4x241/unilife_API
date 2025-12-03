@@ -26,6 +26,17 @@ php artisan key:generate
 # Run migrations and seeders
 php artisan migrate:fresh --seed
 
+
+# Filament install
+composer require filament/filament:"^3.3" -W
+php artisan filament:install --panels
+php artisan filament:optimize
+php artisan filament:optimize-clear
+php artisan vendor:publish --tag=filament-config
+php artisan vendor:publish --tag=filament-panels-translations
+
+# filament create a user
+ php artisan make:filament-resource 
 # Start development server
 php artisan serve
 ```
