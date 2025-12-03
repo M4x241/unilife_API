@@ -18,6 +18,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Select;
+use Filament\Tables\Filters\SelectFilter;
 
 class AnuncioResource extends Resource
 {
@@ -29,24 +30,34 @@ class AnuncioResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('carrera')
+                Select::make('carrera')
+                    ->options([
+                        'Ciencias de la Computación' => 'Ciencias de la Computación',
+                        'Telecomunicaciones' => 'Telecomunicaciones',
+                        'TIC' => 'TIC',
+                        'Sistemas' => 'Sistemas',
+                        'General' => 'General',
+                    ])
                     ->required()
                     ->label('Carrera'),
                 Textarea::make('anuncio')
                     ->required()
                     ->label('Anuncio'),
-                Select::make('categoria')
-                    ->options([
-                        'importante' => 'Importante',
-                        'cotidiano' => 'Cotidiano',
-                        'regular' => 'Regular',
-                    ])
-                    ->required()
-                    ->label('Categoría'),
+                    Select::make('categoria')
+                        ->options([
+                            'academico' => 'Académico',
+                            'evento' => 'Evento',
+                            'importante' => 'Importante',
+                            'deportes' => 'Deportes',
+                        ])
+                        ->required()
+                        ->label('Categoría'),
                 TextInput::make('fecha_inicio')
+                    ->required()
                     ->type('date')
                     ->label('Fecha de Inicio'),
                 TextInput::make('fecha_finalizacion')
+                    ->required()
                     ->type('date')
                     ->label('Fecha de Finalización'),
             ]);
@@ -64,8 +75,23 @@ class AnuncioResource extends Resource
 
             ])
             ->filters([
-                //
+                SelectFilter::make('categoria')
+                    ->options([
+                        'academico' => 'Académico',
+                        'evento' => 'Evento',
+                        'importante' => 'Importante',
+                        'deportes' => 'Deportes',
+                    ]),
+                selectFilter::make('carrera')
+                    ->options([
+                        'Ciencias de la Computación' => 'Ciencias de la Computación',
+                        'Telecomunicaciones' => 'Telecomunicaciones',
+                        'TIC' => 'TIC',
+                        'Sistemas' => 'Sistemas',
+                        'General' => 'General',
+                    ]),
             ]);
+
     }
 
     public static function getRelations(): array
