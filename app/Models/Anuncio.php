@@ -10,5 +10,7 @@ class Anuncio extends Model
         'carrera',
         'anuncio',
         'categoria',
+        'fecha_inicio',
+        'fecha_finalizacion',
     ];
 }
