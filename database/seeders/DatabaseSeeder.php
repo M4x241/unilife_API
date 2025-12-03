@@ -24,5 +24,11 @@ class DatabaseSeeder extends Seeder
             AnuncioSeeder::class,
             WhatsAppGroupSeeder::class,
         ]);
+        //create a user for authentication testing
+        User::create([
+            'name' => 'Administrator',
+            'email' => 'admin@gmail.com',
+            'password' => bcrypt('admin'),
+        ]);
     }
 }

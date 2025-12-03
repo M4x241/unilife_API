@@ -16,6 +16,7 @@ class Universitario extends Model implements JWTSubject
         'apellidos',
         'correo',
         'contrasena',
+        'whatsapp',
     ];
 
     protected $hidden = [

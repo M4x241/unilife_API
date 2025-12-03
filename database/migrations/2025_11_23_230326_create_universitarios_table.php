@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('apellidos');
             $table->string('correo')->unique();
             $table->string('contrasena')->comment('Password: CU + apellido');
+            $table->string('whatsapp')->nullable()->comment('Número de WhatsApp, con código de país si aplica');
             $table->timestamps();
         });
     }

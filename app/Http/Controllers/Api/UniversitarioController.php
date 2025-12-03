@@ -26,6 +26,7 @@ class UniversitarioController extends Controller
             'nombres' => 'required|string',
             'apellidos' => 'required|string',
             'correo' => 'required|email|unique:universitarios,correo',
+            'whatsapp' => 'sometimes|nullable|string',
         ]);
 
         // Auto-generate password: CU + apellido
@@ -56,6 +57,7 @@ class UniversitarioController extends Controller
             'nombres' => 'sometimes|string',
             'apellidos' => 'sometimes|string',
             'correo' => 'sometimes|email|unique:universitarios,correo,' . $universitario->id,
+            'whatsapp' => 'sometimes|nullable|string',
         ]);
 
         // Update password if apellidos changed
