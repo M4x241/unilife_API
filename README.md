@@ -34,11 +34,15 @@ php artisan filament:optimize
 php artisan filament:optimize-clear
 php artisan vendor:publish --tag=filament-config
 php artisan vendor:publish --tag=filament-panels-translations
+composer require filament/widgets:"^3.3" -W
+php artisan filament:install --widgets
+npm install tailwindcss@3 @tailwindcss/forms @tailwindcss/typography postcss postcss-nesting autoprefixer --save-dev
 
 # filament create a user
  php artisan make:filament-resource 
 # Start development server
 php artisan serve
+php artisan serve --host=0.0.0.0 --port=8000
 ```
 
 The API will be available at `http://localhost:8000`
