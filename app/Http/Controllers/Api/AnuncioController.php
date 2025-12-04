@@ -12,7 +12,7 @@ class AnuncioController extends Controller
      */
     public function index(Request $request)
     {
-        $query = \App\Models\Anuncio::query();
+        $query = \App\Models\Anuncio::query()->orderBy('fecha_inicio', 'desc');
 
         // Filter by carrera if provided
         if ($request->has('carrera')) {

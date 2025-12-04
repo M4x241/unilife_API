@@ -43,6 +43,9 @@ class AnuncioResource extends Resource
                 Textarea::make('anuncio')
                     ->required()
                     ->label('Anuncio'),
+                Textarea::make('detalles')
+                    ->label('Detalles')
+                    ->nullable(),
                     Select::make('categoria')
                         ->options([
                             'academico' => 'Académico',
@@ -53,7 +56,6 @@ class AnuncioResource extends Resource
                         ->required()
                         ->label('Categoría'),
                 TextInput::make('fecha_inicio')
-                    ->required()
                     ->type('date')
                     ->label('Fecha de Inicio'),
                 TextInput::make('fecha_finalizacion')

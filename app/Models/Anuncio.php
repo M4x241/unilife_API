@@ -8,7 +8,9 @@ class Anuncio extends Model
 {
     protected $fillable = [
         'carrera',
+
         'anuncio',
+        'detalles',
         'categoria',
         'fecha_inicio',
         'fecha_finalizacion',

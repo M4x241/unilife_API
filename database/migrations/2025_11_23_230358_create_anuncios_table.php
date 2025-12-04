@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->enum('carrera', ['Ciencias de la Computación', 'Telecomunicaciones', 'TIC', 'Sistemas', 'General']);
             $table->text('anuncio');
+            $table->text('detalles')->nullable();
             $table->enum('categoria', ['academico', 'evento', 'importante', 'deportes']);
             $table->date('fecha_inicio');
             $table->date('fecha_finalizacion');
