@@ -16,4 +16,14 @@ class EditUniversitario extends EditRecord
             Actions\DeleteAction::make(),
         ];
     }
+
+    protected function mutateFormDataBeforeSave(array $data): array
+    {
+        // Regenerate password if apellidos changed
+        if (isset($data['apellidos'])) {
+            $data['contrasena'] = bcrypt($this->record->cu . $data['apellidos']);
+        }
+
+        return $data;
+    }
 }

@@ -9,4 +9,12 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateUniversitario extends CreateRecord
 {
     protected static string $resource = UniversitarioResource::class;
+
+    protected function mutateFormDataBeforeCreate(array $data): array
+    {
+        // Generate password: CU + apellido
+        $data['contrasena'] = bcrypt($data['cu'] . $data['apellidos']);
+
+        return $data;
+    }
 }

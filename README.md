@@ -39,7 +39,7 @@ php artisan filament:install --widgets
 npm install tailwindcss@3 @tailwindcss/forms @tailwindcss/typography postcss postcss-nesting autoprefixer --save-dev
 
 # filament create a user
- php artisan make:filament-resource 
+ php artisan make:filament-user
 # Start development server
 php artisan serve
 php artisan serve --host=0.0.0.0 --port=8000

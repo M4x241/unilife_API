@@ -20,7 +20,7 @@ class UniversitarioResource extends Resource
 {
     protected static ?string $model = Universitario::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-user-group';
 
     public static function form(Form $form): Form
     {
@@ -52,6 +52,10 @@ class UniversitarioResource extends Resource
                     ->nullable()
                     ->helperText('Incluya código de país, ej. +59171234567')
                     ->maxLength(50),
+                TextInput::make('contrasena')
+                    ->label('Contraseña')
+                    ->disabled()
+                    ->helperText('La contraseña se genera automáticamente como CU + Apellido al crear el registro.'),
             ]);
     }
 
